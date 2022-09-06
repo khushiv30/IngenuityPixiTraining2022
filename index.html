@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <style> 
+        *{
+            margin: 0;
+        }
+        #progress{
+            background-color: green;
+            height: 3px;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1999;
+        }
+        </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/6.5.2/browser/pixi.js" integrity="sha512-XHX32YCocEDCIiENmO7pf91TtRITLfCagN+uLlj9sJ7RUVBHN1JZtlfb02x4OyXfkuQegd1u6i9mzpRMg+w5xw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+    <body>
+        <div id="progress"></div>
+        <script>
+            console.log('pixi',PIXI);
+            const game = new PIXI.Application({
+                width : innerWidth,
+                height : innerHeight,
+                backgroundColor:0xff0000
+            });
+            console.log('pixi instance',game);
+            // document.body.appendChild(game.view);
+
+            const hello = new PIXI.Text('Hello World !!');
+            hello.x = innerWidth/2;
+            hello.y = innerHeight/2;
+            hello.anchor.set(0.5);
+            // game.stage.addChild(hello);
+
+            game.loader.add('car','https://cdn.pixabay.com/photo/2013/07/13/11/48/bmw-158704_960_720.png').load(
+                ()=>{
+                    document.body.appendChild(game.view);
+                    const car=PIXI.Sprite.from('car');
+                    car.height=200;
+                    car.width=200;
+                    car.x=100;
+                    car.y=400;
+                    game.stage.addChild(car);
+                    
+                    const clouds = PIXI.Sprite.from('https://cdn.pixabay.com/photo/2012/04/18/13/22/cloud-37011_960_720.png');
+                    clouds.height=150;
+                    clouds.width=150;
+                    clouds.x=100;
+                    clouds.y=10;
+
+                    game.stage.addChild(clouds);
+                    game.stage.addChild(hello);
+                }
+            );
+
+            let pDiv=document.getElementById('progress');
+            game.loader.onProgress.add((e)=>{
+                console.log('loaded',e.progress);
+                pDiv.style.width=e.progress+"%";
+                if(e.progress === 100){
+                    pDiv.style.width=0;
+                }
+            })
+            
+            // PIXI.loader
+        </script>
+    </body>
+</html>
