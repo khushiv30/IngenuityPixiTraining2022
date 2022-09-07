@@ -9,7 +9,7 @@
             height: 3px;
             width: 0;
             position: fixed;
-            /* top: 0; */
+            top: 0;
             left: 0;
             z-index: 1999;
         }
@@ -48,7 +48,7 @@
                     car.height=200;
                     car.width=200;
                     car.x=500;
-                    car.y=500;
+                    car.y=400;
                     game.stage.addChild(car);
                     
                     // const clouds = PIXI.Sprite.from('https://cdn.pixabay.com/photo/2012/04/18/13/22/cloud-37011_960_720.png');
@@ -77,12 +77,12 @@
                     think.height=150;
                     think.width=220;
                     think.x=650;
-                    think.y= 380;
+                    think.y= 260;
                     game.stage.addChild(think);
 
                     const txt2=new PIXI.Text('Too Hot Today!');
-                    txt2.x=680;
-                    txt2.y=430;
+                    txt2.x=670;
+                    txt2.y=310;
                     game.stage.addChild(txt2);
 
                     game.stage.addChild(hello);
