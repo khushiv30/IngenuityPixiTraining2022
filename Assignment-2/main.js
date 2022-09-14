@@ -9,8 +9,8 @@ const game = new PIXI.Application({
   loadAssets(
     [
       { name: "back", url: "assets/cardback.png" },
-    //   {name:"front",url:"assets/cardDeck.png"},
-      { name: "front", url: "assets/smilies.jpg" },
+      {name:"front",url:"assets/2-cardDeck.png"},
+      // { name: "front", url: "assets/smilies.jpg" },
     ],
     start
   );
@@ -45,7 +45,7 @@ const game = new PIXI.Application({
       back.x = d;
       back.y = 100;
       game.stage.addChild(back);
-      d = d + 300;
+      d = d + 250;
     }
     var x = 0;
     var y = 0;
@@ -53,15 +53,15 @@ const game = new PIXI.Application({
     for (var i = 0; i < 5; i++) {
       const card = new PIXI.Texture(
         resources["front"].texture,
-        // new PIXI.Rectangle(0, 0, 225, 312) 
-        new PIXI.Rectangle(0, 0, 125, 181)
+        new PIXI.Rectangle(2,2,77,106) 
+        // new PIXI.Rectangle(0, 0, 125, 181)
       );
       const front = PIXI.Sprite.from(card);
-      front.scale.set(1);
+      front.scale.set(1.7);
       front.x = e;
       front.y = 100;
       game.stage.addChild(front);
-      e = e + 300;
+      e = e + 250;
       x += 125;
       y += 181;
     }
@@ -72,7 +72,7 @@ const game = new PIXI.Application({
       back.x = d;
       back.y = 360;
       game.stage.addChild(back);
-      d = d + 300;
+      d = d + 250;
     }
     var x = 0;
     var y = 0;
@@ -80,15 +80,15 @@ const game = new PIXI.Application({
     for (var i = 0; i < 5; i++) {
       const card = new PIXI.Texture(
         resources["front"].texture,
-        // new PIXI.Rectangle(0, 0, 225, 312)
-        new PIXI.Rectangle(0,0,125,181)
+        new PIXI.Rectangle(2,2,77,106)
+        // new PIXI.Rectangle(0,0,125,181)
       );
       const front = PIXI.Sprite.from(card);
-      front.scale.set(1);
+      front.scale.set(1.7);
       front.x = e;
       front.y = 360;
       game.stage.addChild(front);
-      e = e + 300;
+      e = e + 250;
       x += 125;
       y += 181;
     }
