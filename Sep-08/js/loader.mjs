@@ -31,3 +31,4 @@ export function getResourceById(id) {
 export function getTextureById(id) {
     return resources[id].texture;
 }
+
