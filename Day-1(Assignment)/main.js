@@ -87,29 +87,66 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const game = new PIXI.Application({
-  width: 800,
-  height: 600,
-  backgroundColor: 0x3366ff,
+  // width: 800,
+  // height: 600,
+  width:innerWidth,
+  height:innerHeight,
+  // backgroundColor: 0x3366ff,
   
 });
 document.getElementById("game").append(game.view);
 loadAssets([
-  { name: "back", url: "assets/cardback.png" },
-  { name: "front", url: "assets/smilies.jpg" },
+  {name :"background",url:"assets/bg.jpg"},
+  // { name: "back", url: "assets/cardback.png" },
+  {name: "sun", url: "assets/sun.png" },
+  {name : "clouds",url:"assets/cloud.webp"},
+  {name:"cycle",url:"assets/bicycle.webp"},
 ], start);
 //------------------------------
 const pBar = document.getElementById("bar");
 const pText = document.getElementById("progress");
 function preload(e) {
-  pBar.style.width = e.progress * 2 + "%";
-  pText.innerText = e.progress + "%";
-  if (e.progress === 100) {
-    console.log("hide loader");
-    setTimeout(() => {
-      document.getElementById("loader").style.display = "none";
-    }, 500);
+  // pBar.style.width = e.progress * 2 + "%";
+  // pText.innerText = e.progress + "%";
+  // console.log(e.progress);
+  // if (e.progress === 100) {
+  //  // console.log("hide loader");
+  //   setTimeout(() => {
+  //     document.getElementById("loader").style.display = "none";
+  //   }, 500);
+  // }
+ // console.log(e.progress);
+
+ if(e.progress===50)
+ {
+   pBar.style.backgroundColor = "red";
+     pBar.style.width = e.progress +"%" ;
+     pText.innerText = e.progress +"%" ;
+     pText.style.color="black";
+     pText.style.fontWeight="bold";
+     pText.style.fontFamily="arial";
+   console.log('hello bro');
+   setTimeout(() => {
+     
+ pText.innerText = e.progress +"%";
+ pBar.style.width = e.progress +"%" ;
+ pBar.style.backgroundColor = "darkgreen";
+   }, 1000);
+   
+
+ }
+
+ if (e.progress === 100) {
+   console.log("hide loader");
+   //pBar.style.backgroundColor = "red";
+   
+   setTimeout(() => {
+     pBar.style.width = e.progress +"%" ;
+     pBar.style.backgroundColor = "red";
+     document.getElementById("loader").style.display = "none";
+   },  2000);
+
   }
-  console.log(e.progress);
 }
 
 function loadAssets(list, onLoadComplete) {
@@ -119,12 +156,40 @@ function loadAssets(list, onLoadComplete) {
 //----------------------------------
 function start(loader, resources) {
     console.log('params ', arguments);
-    const back = PIXI.Sprite.from(resources['back'].texture);
-    back.scale.set(0.2);
+    const back = PIXI.Sprite.from(resources['background'].texture);
+    back.width=innerWidth;
+    back.height=innerHeight;
+    // back.scale.set(0.2);
     game.stage.addChild(back);
-    const smily = new PIXI.Texture(resources['front'].texture,
-    new PIXI.Rectangle(0,0,150,150));
-    const front = PIXI.Sprite.from(smily);
-    // front.scale.set(0.2);
-    game.stage.addChild(front);
+    //const bg = PIXI.Sprite.from(resources['background'].texture);
+   // bg.scale.set(0.2);
+   // game.stage.addChild(bg);
+    // const smily = new PIXI.Texture(resources['sun'].texture,
+    // // new PIXI.Rectangle(0,0,150,150));
+    // const sun2 = PIXI.Sprite.from(smily);
+    // // front.scale.set(0.2);
+    // game.stage.addChild(front);
+
+    const sunny = PIXI.Sprite.from(resources['sun'].texture);
+    game.stage.addChild(sunny);
+    sunny.scale.set(0.6);
+    sunny.x=800;
+    sunny.y=30;
+
+    const cl = PIXI.Sprite.from(resources['clouds'].texture);
+    game.stage.addChild(cl);
+    cl.scale.set(0.4);
+    cl.x=870;
+    cl.y=130;
+
+    const cyc = PIXI.Sprite.from(resources['cycle'].texture);
+    game.stage.addChild(cyc);
+    cyc.scale.set(0.5);
+    cyc.x=500;
+    cyc.y=430;
+
+
+    var a=new PIXI.Text("Sunny Day!");
+    game.stage.addChild(a);
+    a.x=600;
 }
