@@ -10,7 +10,7 @@ export class Game extends Application{
         this.preload([
             {name:'wheel', url:'assets/my_wheel.png'},
             {name:'triangle',url:'assets/arrow-1.webp'},
-        ], this.onLoad.bind(this));
+        ],this.onLoad.bind(this));
     }
     preload(list:any[], cb:()=>{}):void {
         this.loader.add(list);

@@ -2,6 +2,9 @@
     margin:0;
     padding: 0;
 }
+body{
+    overflow: hidden;
+}
 #loader{
     background-color: black;
     width: 100%;
@@ -11,6 +14,7 @@
     left:0;
     align-content: center;
     text-align: center;
+    background: linear-gradient(0deg, rgba(34,178,195,1) 0%, rgba(253,230,45,1) 100%);
 }
 #barContainer{
     position:absolute;
@@ -24,7 +28,8 @@
 #bar{
     width:0;
     height:5px;
-    background-color: green;
+    border-radius: 3px;
+    /* background-color: green; */
 }
 #game{
     width:1024px;

@@ -25,7 +25,7 @@ export function start(app) {
           stage.removeChild(secondChoice[1].view);
           cards = cards.filter((c) => !c.isOpen());
           if (cards.length === 0) {
-            let finalMessage = new Text('You cleared all cards in ##:##\nClick To Continue.');
+            let finalMessage = new Text('CONGRATULATIONS YOU FOUND ALL THE MATCHES');
             finalMessage.anchor.set(0.5);
             finalMessage.x = app.screen.width/2;
             finalMessage.y = app.screen.height/2;
@@ -52,7 +52,7 @@ export function start(app) {
 function drawCards(stage) {
   let cardNum = 0;
   const cards = [];
-  const offsetX = 10;
+  const offsetX = 200;
   const offsetXY = 10;
   const paddingX = 10;
   const paddingY = 10;
