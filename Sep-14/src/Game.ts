@@ -106,3 +106,6 @@ export class Game extends Application {
     window.addEventListener("keyup", onKeyEvent);
   }
 }
+
+
+
