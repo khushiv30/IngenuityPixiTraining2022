@@ -11,6 +11,7 @@ export class Game extends Application {
         { name: "goblin", url: "assets/goblins/goblins.json" },
         { name: "boy", url: "assets/spineboy/spineboy.json" },
         { name: "hero", url: "assets/hero/hero.json" },
+        {name:"bg",url:"assets/background.jpg"},
       ],
       this.onLoad.bind(this)
     );
@@ -25,11 +26,17 @@ export class Game extends Application {
   onLoad(): void {
     this.stage.interactive = true;
 
-    /*    const gob = new Spine(getResource("goblin").spineData);
+    const bg = new Sprite(this.loader.resources['bg'].texture);
+    bg.height=innerHeight;
+    bg.width=innerWidth;
+    this.stage.addChild(bg);
+
+    const gob = new Spine(getResource("goblin").spineData);
+    gob.scale.set(1.2);
     gob.skeleton.setSkinByName("goblin");
     gob.skeleton.setSlotsToSetupPose();
     gob.state.setAnimation(0, "walk", true);
-    gob.x = this.screen.width / 2;
+    gob.x = 200;
     gob.y = this.screen.height;
     this.stage.addChild(gob);
 
@@ -40,9 +47,10 @@ export class Game extends Application {
       gob.skeleton.setSkinByName(newSkinName);
       gob.skeleton.setSlotsToSetupPose();
     });
-    */
+    
     const hero = new Spine(getResource("boy").spineData);
-    hero.x = this.screen.width / 2;
+    // hero.x = this.screen.width / 2;
+    hero.x=800;
     hero.y = this.screen.height;
     hero.scale.set(0.5);
     hero.skeleton.setSlotsToSetupPose();
